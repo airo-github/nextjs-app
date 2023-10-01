@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { Footer } from '../components/Fotter'
 import { Links } from '../components/Links';
+import Headline from '../components/Headline';
 
 export default function Home() {
   return (
@@ -12,13 +13,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className={styles.title}>
-          Index, <a href="https://nextjs.org">Next.js!</a>
-        </h1>
 
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <Headline page='index' />
 
         <Links />
 
