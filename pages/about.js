@@ -7,17 +7,17 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Index Page</title>
+        <title>About Page</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className={styles.title}>
-          Index, <a href="https://nextjs.org">Next.js!</a>
+          About, <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
+          Get started by editing <code>pages/about.js</code>
         </p>
 
         <Links />
