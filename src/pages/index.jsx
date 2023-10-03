@@ -9,23 +9,12 @@ export default function Home() {
   const [count, setCount] = useState(1);
   const [text, setText] = useState('');
   const [isShow, setIsShow] = useState(true);
+  const [array, setArray] = useState([]);
 
   const handleClick = useCallback(() => {
     if (count < 10)
-      setCount((count) => count + 1);
+      setCount((prevcount) => prevcount + 1);
   }, [count]);
-
-  const handleDisplay = useCallback(() => {
-    setIsShow((isShow) => !isShow);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.backgroundColor = 'lightblue';
-
-    return () => {
-      document.body.style.backgroundColor = '';
-    }
-  }, [])
 
   const handleChange = useCallback((e) => {
     if (e.target.value.length > 5) {
@@ -34,6 +23,29 @@ export default function Home() {
     };
     setText(e.target.value.trim());
   }, []);
+
+  const handleDisplay = useCallback(() => {
+    setIsShow((previsShow) => !previsShow);
+  }, []);
+
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      if (prevArray.some(item => item === text)) {
+        alert('同じ要素が既に存在します。')
+        return prevArray;
+      }
+      const newArray = [...prevArray, text]
+      return newArray;
+    });
+  }, [text]);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = 'lightblue';
+
+    return () => {
+      document.body.style.backgroundColor = '';
+    }
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -52,6 +64,14 @@ export default function Home() {
       </button>
 
       <input type='text' value={text} onChange={handleChange} />
+
+      <button onClick={handleAdd}>追加</button>
+
+      <ul>
+        {array.map((item) => {
+          return <li key={item}>{item}</li>
+        })}
+      </ul>
 
       <Main page='index' />
 
